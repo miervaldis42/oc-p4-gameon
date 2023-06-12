@@ -1,0 +1,27 @@
+:root {
+  --font-default: "DM Sans", Arial, Helvetica, sans-serif;
+  --font-weight-regular: 500;
+  --font-weight-medium: 300;
+  --color-primary: #ff0000;
+
+  --modal-duration: 0.8s;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 20px 30px;
+}
+
+h1,
+a,
+p,
+span,
+button,
+label {
+  font-family: var(--font-default);
+}

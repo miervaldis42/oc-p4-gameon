@@ -1,0 +1,28 @@
+/*** Header ***/
+#myTopnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 40px;
+}
+
+#myTopnav .header-logo img {
+  height: 19px;
+}
+
+#myTopnav .main-navbar a:last-child i {
+  color: var(--color-primary);
+}
+
+#myTopnav .main-navbar .navlinks {
+  display: none;
+}
+
+/*** Footer ***/
+footer .copyrights {
+  font-weight: var(--font-weight-medium);
+  font-size: 10px;
+  color: var(--color-primary);
+  text-align: center;
+}

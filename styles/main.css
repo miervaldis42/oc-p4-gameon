@@ -1,0 +1,27 @@
+#competition-cover {
+  display: none;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-family: var(--font-default);
+  font-weight: var(--font-weight-medium);
+  font-size: 40px;
+
+  margin-bottom: 17px;
+}
+
+#content #description {
+  font-weight: var(--font-weight-regular);
+  font-size: 13px;
+}
+
+#content #competition-img {
+  border-radius: 8px;
+
+  margin: 40px 0 29px 0;
+}

@@ -14,19 +14,23 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="/styles/global.css" />
-    <link rel="stylesheet" href="/styles/common.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="./styles/global.css" />
+    <link rel="stylesheet" href="./styles/common.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/modal.css" />
   </head>
 
   <body>
     <header class="topnav" id="myTopnav">
       <div class="header-logo">
-        <img src="/public/assets/logo.png" alt="logo" />
+        <img src="./public/assets/logo.png" alt="logo" />
       </div>
 
       <nav class="main-navbar">
@@ -47,32 +51,248 @@
       <div id="competition-cover">
         <div id="rectangle-black"></div>
         <img
-          src="/public/assets/bg_img.jpg"
+          src="./public/assets/bg_img.jpg"
           alt="Girl celebrating her victory with a PlayStation controller in her hand."
         />
       </div>
 
       <div id="content">
-        <h1>Marathlon national de jeux video</h1>
+        <h1>Marathlon national de jeux vidéos</h1>
         <p id="description">
           Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux
           réservations... Places limitées !
         </p>
 
         <img
-          src="/public/assets/bg_img.jpg"
+          src="./public/assets/bg_img.jpg"
           alt="Girl celebrating her victory with a PlayStation controller in her hand."
           id="competition-img"
         />
 
-        <button>Je M'inscris</button>
+        <button class="modal-button-open">Je M'inscris</button>
       </div>
+
+      <dialog>
+        <button class="modal-button-close">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+            <path
+              d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+            />
+          </svg>
+        </button>
+
+        <form
+          name="reserve"
+          novalidate
+          action="index.html"
+          method="get"
+          onsubmit="submitParticipationToTournament(event);"
+          class="modal-body"
+        >
+          <div class="form-data">
+            <label for="firstName">Prénom</label><br />
+            <input
+              class="text-control"
+              type="text"
+              id="firstName"
+              name="firstName"
+              minlength="2"
+              required
+            /><br />
+            <small id="firstNameError" class="errorMessage"
+              ><i class="fa-solid fa-exclamation-circle"></i> Veuillez entrer 2
+              caractères ou plus et aucun caractères spéciaux sauf "-".</small
+            >
+          </div>
+
+          <div class="form-data">
+            <label for="lastName">Nom</label><br />
+            <input
+              class="text-control"
+              type="text"
+              id="lastName"
+              name="lastName"
+              minlength="2"
+              required
+            /><br />
+            <small id="lastNameError" class="errorMessage"
+              ><i class="fa-solid fa-exclamation-circle"></i> Veuillez entrer 2
+              caractères ou plus et aucun caractères spéciaux sauf "-".</small
+            >
+          </div>
+
+          <div class="form-data">
+            <label for="email">E-mail</label><br />
+            <input
+              class="text-control"
+              type="email"
+              id="email"
+              name="email"
+              required
+            /><br />
+            <small id="emailError" class="errorMessage"
+              ><i class="fa-solid fa-exclamation-circle"></i> Veuillez entrer
+              une adresse e-mail valide.</small
+            >
+          </div>
+
+          <div class="form-data">
+            <label for="birthDate">Date de naissance</label><br />
+            <input
+              class="text-control"
+              type="date"
+              id="birthDate"
+              name="birthDate"
+              maxlength="10"
+            /><br />
+            <small id="birthDateError" class="errorMessage"
+              ><i class="fa-solid fa-exclamation-circle"></i> Veuillez entrer
+              votre date de naissance car les moins de 8 ans ne peuvent
+              malheureusement pas participer à l'évènement.</small
+            >
+          </div>
+
+          <div class="form-data">
+            <label for="quantity"
+              >À combien de tournois GameOn avez-vous déjà participé ?</label
+            ><br />
+            <input
+              type="number"
+              class="text-control"
+              id="quantity"
+              name="quantity"
+              min="0"
+              max="99"
+              required
+            />
+          </div>
+
+          <p class="text-label">
+            A quel tournoi souhaitez-vous participer cette année ?
+          </p>
+
+          <div class="form-data">
+            <input
+              class="checkbox-input"
+              type="radio"
+              id="location1"
+              name="location"
+              value="New York"
+            />
+
+            <label class="checkbox-label" for="location1">
+              <span class="checkbox-icon"></span>
+              New York
+            </label>
+            <input
+              class="checkbox-input"
+              type="radio"
+              id="location2"
+              name="location"
+              value="San Francisco"
+            />
+
+            <label class="checkbox-label" for="location2">
+              <span class="checkbox-icon"></span>
+              San Francisco
+            </label>
+            <input
+              class="checkbox-input"
+              type="radio"
+              id="location3"
+              name="location"
+              value="Seattle"
+            />
+
+            <label class="checkbox-label" for="location3">
+              <span class="checkbox-icon"></span>
+              Seattle
+            </label>
+            <input
+              class="checkbox-input"
+              type="radio"
+              id="location4"
+              name="location"
+              value="Chicago"
+            />
+
+            <label class="checkbox-label" for="location4">
+              <span class="checkbox-icon"></span>
+              Chicago
+            </label>
+            <input
+              class="checkbox-input"
+              type="radio"
+              id="location5"
+              name="location"
+              value="Boston"
+            />
+
+            <label class="checkbox-label" for="location5">
+              <span class="checkbox-icon"></span>
+              Boston
+            </label>
+            <input
+              class="checkbox-input"
+              type="radio"
+              id="location6"
+              name="location"
+              value="Portland"
+            />
+
+            <label class="checkbox-label" for="location6">
+              <span class="checkbox-icon"></span>
+              Portland
+            </label>
+
+            <br />
+            <small id="locationError" class="errorMessage"
+              ><i class="fa-solid fa-exclamation-circle"></i> Vous devez choisir
+              au moins un tournoi.</small
+            >
+          </div>
+
+          <div class="form-data">
+            <input
+              class="checkbox-input"
+              type="checkbox"
+              id="checkbox1"
+              required
+            />
+            <label class="checkbox2-label" for="checkbox1">
+              <span class="checkbox-icon"></span>
+              J'ai lu et accepté les conditions & règles de l'évènement
+            </label>
+            <small id="useTermsError" class="errorMessage"
+              ><i class="fa-solid fa-exclamation-circle"></i> Vous devez
+              accepter les termes et conditions.</small
+            >
+            <br />
+
+            <input class="checkbox-input" type="checkbox" id="checkbox2" />
+            <label class="checkbox2-label" for="checkbox2">
+              <span class="checkbox-icon"></span>
+              Je souhaite être prévenu des prochains évènements
+            </label>
+            <br />
+          </div>
+
+          <input class="btn-submit" type="submit" value="C'est parti" />
+        </form>
+
+        <div id="successfulSubmission">
+          <p>Merci pour votre inscription !</p>
+
+          <button id="modal-button-close2">Fermer</button>
+        </div>
+      </dialog>
     </main>
 
     <footer>
       <p class="copyrights">Copyright 2014 - 2022, GameOn Inc.</p>
     </footer>
 
-    <script src="modal.js"></script>
+    <script src="./scripts/modal.js"></script>
+    <script src="./scripts/form.js"></script>
   </body>
 </html>

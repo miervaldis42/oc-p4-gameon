@@ -1,23 +1,35 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
+/**
+ * Modal Actions
+ */
+const modalButtonOpen = document.querySelector(".modal-button-open");
+const modal = document.querySelector("dialog");
+const modalButtonClose = document.querySelector(".modal-button-close");
+const modalSubmitButton = document.querySelector(".btn-submit");
+
+const closeSuccessfulSubmissionModalButton = document.querySelector(
+  "#modal-button-close2"
+);
+
+modalButtonOpen.addEventListener("click", () => modal.showModal());
+
+modalButtonClose.addEventListener("click", () => modal.close());
+
+modal.addEventListener("click", (e) => {
+  const dialogDimensions = modal.getBoundingClientRect();
+
+  if (
+    e.clientX < dialogDimensions.left ||
+    e.clientX > dialogDimensions.right ||
+    e.clientY < dialogDimensions.top ||
+    e.clientY > dialogDimensions.bottom
+  ) {
+    modal.close();
   }
-}
+});
 
-// DOM Elements
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+closeSuccessfulSubmissionModalButton.addEventListener("click", () => {
+  successfulSubmissionContent.style.display = "none";
+  form.style.display = "flex";
 
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// launch modal form
-function launchModal() {
-  modalbg.style.display = "block";
-}
-
-
+  modal.close();
+});

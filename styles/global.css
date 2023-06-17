@@ -26,7 +26,8 @@ label {
   font-family: var(--font-default);
 }
 
-button {
+button,
+.btn-submit {
   align-self: center;
 
   font-weight: var(--font-weight-medium);
@@ -40,7 +41,8 @@ button {
 
   cursor: pointer;
 }
-button:hover {
+button:hover,
+.btn-submit:hover {
   background-color: var(--color-secondary);
 }
 
